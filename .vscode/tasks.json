@@ -1,0 +1,63 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "process",
+			"label": "assemble",
+			"command": "nasm",
+			"args": [
+				"-f",
+				"elf64",
+				"${file}",
+				"-o",
+				"out/${fileBasenameNoExtension}.o"
+			],
+			"problemMatcher": []
+		},
+		{
+			"type": "process",
+			"label": "link",
+			"command": "ld",
+			"args": [
+				"out/${fileBasenameNoExtension}.o",
+				"-o",
+				"out/${fileBasenameNoExtension}.out"
+			],
+			"dependsOn": [
+				"assemble"
+			]
+		},
+		{
+			"type": "process",
+			"label": "link with ASCII",
+			"command": "ld",
+			"args": [
+				"out/${fileBasenameNoExtension}.o",
+				"out/ASCII.o",
+				"-o",
+				"out/${fileBasenameNoExtension}.out"
+			],
+			"dependsOn": [
+				"assemble"
+			]
+		},
+		{
+			"type": "process",
+			"label": "assemble, link & run",
+			"command": "out/${fileBasenameNoExtension}.out",
+			"dependsOn": [
+				"link"
+			],
+			"problemMatcher": []
+		},
+		{
+			"type": "process",
+			"label": "assemble, link & run (with ASCII)",
+			"command": "out/${fileBasenameNoExtension}.out",
+			"dependsOn": [
+				"link with ASCII"
+			],
+			"problemMatcher": []
+		}
+	]
+}
