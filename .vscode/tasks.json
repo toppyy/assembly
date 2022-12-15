@@ -39,7 +39,8 @@
 			],
 			"dependsOn": [
 				"assemble"
-			]
+			],
+			"problemMatcher": []
 		},
 		{
 			"type": "process",
@@ -57,7 +58,11 @@
 			"dependsOn": [
 				"link with ASCII"
 			],
-			"problemMatcher": []
+			"problemMatcher": [],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
 		}
 	]
 }
