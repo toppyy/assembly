@@ -5,7 +5,7 @@ Attempts to program in assembly language. The language is for [NASM](https://www
 ## Programs
 
 ### HowManyLines.asm
-Counts the number of lines (= LF-characters) in a file. The filename is prompted. The "last line" is not included (last byte of file is not LF). At the moment only characters up to 100 000 are counted as I've yet to implement a file buffer. Needs to be linked with `ASCII.asm` (see below).
+Counts the number of lines (= LF-characters) in a file. The filename is prompted. The "last line" is not included (last byte of file is not LF). The input is buffered in as 100 000 character chunks. Needs to be linked with `ASCII.asm` (see below).
 
 To assemble under `out/`:
 
