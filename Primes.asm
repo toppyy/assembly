@@ -6,9 +6,9 @@
 ;-------------------------------------------------------------------------------------
 
 LF          equ 10
-STDIN       equ 0           ; Code for standard input
-STDOUT      equ 1           ; Code for standard output
-N           equ 10000          ; Number up to which primes are printed
+STDIN       equ 0         ; Code for standard input
+STDOUT      equ 1         ; Code for standard output
+N           equ 10000     ; Number up to which primes are printed
 
 %macro printIntegerAndLF 1
     mov edi, %1
@@ -47,7 +47,7 @@ section .bss
 section .data
     number      dd 55
     cursor      dd 0
-    bytecount   dd 0
+    bytecount   dq 0
 
 section .text
 global _start
@@ -57,11 +57,12 @@ _start:
     mov ebp, 0
     mov r12d, 2
 
+    ; Calculate the number of bytes reserved for the numbers
     mov eax, N
-    mov di, 4
-    mul di
-
+    mov edi, 4
+    mul edi
     mov dword[bytecount], eax
+    mov dword[bytecount + 4], edx
     
 InitLoop:
     mov dword[numbers + ebp], r12d
