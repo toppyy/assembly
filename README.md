@@ -21,13 +21,19 @@ Run it:
 
     out/HowManyLines.out
 
-(`.vscode/tasks.json` has some scripts ready for VSCode)
+## Primes.asm
+
+Uses the Sieve of Eratosthenes to find all prime numbers up to *N* (defined in `Primes.asm`).
+
+Like `HowManyLines.asm`, depends on `ASCII.asm`.
 
 ### ASCII.asm
 
 Utilify functions for 
 - converting integers to ASCII-codes
 - printing ASCII-characters.
+
+(`.vscode/tasks.json` has some scripts ready for assembling and linking in VSCode )
 
 
 ## Some sources:
