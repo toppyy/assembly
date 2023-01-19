@@ -86,11 +86,11 @@ OuterLoop:
 InitInnerLoop:
     mov r12d, r14d                                ; Init byte counter for loop
     ; Store number of bytes to increment in r13d
-    ;    current number * 4
+    ; That is: current number * 4
     mov eax, ebp
     mov r13d, 4
-    mul r13d
-    mov r13d, eax
+    mul r13d        
+    mov r13d, eax ; NOTE: This fail when the result of the multiplication is over 32bits (the result is in edx:eax)
 
 InnerLoop:
     add r12d, r13d
