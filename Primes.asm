@@ -8,7 +8,7 @@
 LF          equ 10
 STDIN       equ 0         ; Code for standard input
 STDOUT      equ 1         ; Code for standard output
-N           equ 10000     ; Number up to which primes are printed
+N           equ 1000000    ; Number up to which primes are printed
 
 %macro printIntegerAndLF 1
     mov edi, %1
@@ -85,11 +85,17 @@ OuterLoop:
     ; -------------- InnerLoop: All numbers that can be divided by cursor are marked as removed ----
 InitInnerLoop:
     mov r12d, r14d                                ; Init byte counter for loop
+    ; Store number of bytes to increment in r13d
+    ;    current number * 4
+    mov eax, ebp
+    mov r13d, 4
+    mul r13d
+    mov r13d, eax
 
 InnerLoop:
-    add r12d, 4
+    add r12d, r13d
     cmp r12d, dword[bytecount]
-    je OuterLoopNext
+    jge OuterLoopNext
 
     divideInt dword[numbers + r12d], ebp        ; Divide by value to which cursor points to, remainder in edx
     cmp edx, 0                                  ; Is the remainder non-zero?
