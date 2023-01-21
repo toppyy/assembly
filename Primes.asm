@@ -8,7 +8,7 @@
 LF          equ 10
 STDIN       equ 0         ; Code for standard input
 STDOUT      equ 1         ; Code for standard output
-N           equ 1000000    ; Number up to which primes are printed
+N           equ 1000000   ; Number up to which primes are printed
 
 %macro printIntegerAndLF 1
     mov edi, %1
@@ -96,11 +96,7 @@ InnerLoop:
     add r12d, r13d
     cmp r12d, dword[bytecount]
     jge OuterLoopNext
-
-    divideInt dword[numbers + r12d], ebp        ; Divide by value to which cursor points to, remainder in edx
-    cmp edx, 0                                  ; Is the remainder non-zero?
-    jne InnerLoop                               ;  No, continue
-    mov dword[removed + r12d], 1                ;  Yes, mark as removed
+    mov dword[removed + r12d], 1            ; Mark as removed
 
     jmp InnerLoop
     ; -------------- InnerLoop: Done -----------------------------------------------------------------
