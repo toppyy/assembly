@@ -21,11 +21,18 @@ Run it:
 
     out/HowManyLines.out
 
-## Primes.asm
+### Primes.asm
 
 Uses the Sieve of Eratosthenes to find all prime numbers up to *N* (defined in `Primes.asm`).
 
 Like `HowManyLines.asm`, depends on `ASCII.asm`.
+
+### HowManyBitsAndPowerOfDifference.asm
+
+- Two functions:
+    - onebits: Calculates the number of bits set in an integer
+    - power_of_difference: Calculates the difference of doubles and the power of that 
+- Taken from Ray Toals exercises [here](https://cs.lmu.edu/~ray/classes/sp/assignment/5/)
 
 ### ASCII.asm
 
